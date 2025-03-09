@@ -1,3 +1,5 @@
+import 'package:ajedrez_flutter/components/square.dart';
+import 'package:ajedrez_flutter/helper/helper_methods.dart';
 import 'package:flutter/material.dart';
 
 class GameBoard extends StatefulWidget {
@@ -10,6 +12,16 @@ class GameBoard extends StatefulWidget {
 class _GameBoardState extends State<GameBoard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: GridView.builder(
+        itemCount: 8 * 8,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate:
+          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 8),
+        itemBuilder: (context, index){
+          return Square(isWhite: isWhite(index));
+        },
+      ),
+    );
   }
 }
