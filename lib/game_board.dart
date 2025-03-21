@@ -149,7 +149,7 @@ class _GameBoardState extends State<GameBoard> {
       isWhite: false, 
       imagePath: 'lib/images/black-queen.png'
     );
-    newBoard[7][4] = ChessPiece(
+    newBoard[7][3] = ChessPiece(
       type: ChessPieceType.queen, 
       isWhite: true, 
       imagePath: 'lib/images/black-queen.png'
@@ -160,8 +160,8 @@ class _GameBoardState extends State<GameBoard> {
       isWhite: false, 
       imagePath: 'lib/images/black-king.png'
     );
-    newBoard[7][3] = ChessPiece(
-      type: ChessPieceType.queen, 
+    newBoard[7][4] = ChessPiece(
+      type: ChessPieceType.king, 
       isWhite: true, 
       imagePath: 'lib/images/black-king.png'
     );
@@ -389,9 +389,8 @@ class _GameBoardState extends State<GameBoard> {
           candidateMoves.add([newRow, newCol]);
         } 
 
-
         break;   
-      default:
+      
     }
 
     return candidateMoves;
@@ -488,7 +487,7 @@ class _GameBoardState extends State<GameBoard> {
   //IS KING IN CHECK?
   bool isKingInCheck(bool isWhiteKing){
     //get the position of the king
-    List<int> KingPosition =
+    List<int> kingPosition =
         isWhiteKing ? whiteKingPosition : blackKingPosition;
 
     //check is any enemy piece can attack the king
@@ -504,7 +503,7 @@ class _GameBoardState extends State<GameBoard> {
 
         //check if the kings position is in this pieces valid moves
         if (pieceValidMoves.any((move) => 
-            move[0] == KingPosition[0] && move[1] == KingPosition[1])){
+            move[0] == kingPosition[0] && move[1] == kingPosition[1])){
           return true;
         }
       }
@@ -628,7 +627,7 @@ class _GameBoardState extends State<GameBoard> {
 
           //CHESS BOARD
           Expanded(
-            flex: 5,
+            flex: 6,
             child: GridView.builder(
               //8 x 8 = 64 casillas
               itemCount: 8 * 8,
