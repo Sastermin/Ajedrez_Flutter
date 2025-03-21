@@ -8,6 +8,7 @@ bool isWhite(int index) {
   return isWhite;
 }
 
+//Alterna los colores de las casillas en un patrón de tablero de ajedrez
 bool isInBoard(int row, int col) {
-  return row >= 0 && row < 8 && col >= 0 && col < 8;
+  return row >= 0 && row < 8 && col >= 0 && col < 8; //verifica que todo dentro del tablero
 }
