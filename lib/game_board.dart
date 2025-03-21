@@ -402,7 +402,7 @@ class _GameBoardState extends State<GameBoard> {
   List<List<int>> calculateRealValidMoves(
       int row, int col, ChessPiece? piece, bool checkSimulation){
     List<List<int>> realValidMoves = [];
-    List<List<int>> candidateMoves = []; 
+    List<List<int>> candidateMoves = calculateRawValidMoves(row, col, piece); 
 
     //after generating all cadidate moves, filter out any that would result in a check
     if (checkSimulation){
